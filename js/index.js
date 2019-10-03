@@ -42,28 +42,49 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 // Navigation
-const menu = document.querySelectorAll("a");
-console.log(menu);
-menu[0].textContent = siteContent["nav"]["nav-item-1"];
-menu[1].textContent = siteContent["nav"]["nav-item-2"];
-menu[2].textContent = siteContent["nav"]["nav-item-3"];
-menu[3].textContent = siteContent["nav"]["nav-item-4"];
-menu[4].textContent = siteContent["nav"]["nav-item-5"];
-menu[5].textContent = siteContent["nav"]["nav-item-6"];
 
-// Changing font color to green
-menu.forEach( element => {
-  element.style.color = 'green';
-});
+// Assigning menu texts to a variable
+const menuredo = siteContent.nav;
+// Making array of menu texts
+const menutext = Object.values(menuredo);
+menutext.pop();
+console.log(menutext);
+
+// Running forEach to make object
+menutext.forEach(item => {
+  let menuitem = document.createElement('a');
+  menuitem.textContent = item;
+  //Changing font color to green
+  menuitem.style.color = 'green';
+  let oldnav = document.querySelector(".container header nav");
+  oldnav.appendChild(menuitem);
+})
+
+//  const menu = document.querySelectorAll("a");
+//  console.log(menu);
+//  menu[0].textContent = siteContent["nav"]["nav-item-1"];
+//  menu[1].textContent = siteContent["nav"]["nav-item-2"];
+//  menu[2].textContent = siteContent["nav"]["nav-item-3"];
+//  menu[3].textContent = siteContent["nav"]["nav-item-4"];
+//  menu[4].textContent = siteContent["nav"]["nav-item-5"];
+//  menu[5].textContent = siteContent["nav"]["nav-item-6"];
+
+//  //Changing font color to green
+//  menu.forEach( element => {
+//    element.style.color = 'green';
+//  });
 
 //Prepend & appendChild
+
+let newa = document.querySelector(".container header nav");
+console.log(newa);
 const prepender = document.createElement('a');
-prepender.textContent = 'Prepender ';
-menu[0].prepend(prepender);
+prepender.textContent = 'Prepender';
+newa.prepend(prepender);
 prepender.style.color = 'green';
 const appenderChild = document.createElement('a');
-appenderChild.textContent = ' Appender';
-menu[5].appendChild(appenderChild);
+appenderChild.textContent = 'Appender';
+newa.appendChild(appenderChild);
 appenderChild.style.color = 'green';
 
 //Circle image
