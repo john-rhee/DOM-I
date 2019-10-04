@@ -44,22 +44,34 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 // Navigation
 
 // Assigning menu texts to a variable
-const menuredo = siteContent.nav;
-// Making array of menu texts
-const menutext = Object.values(menuredo);
-menutext.pop();
-console.log(menutext);
+// const menuredo = siteContent.nav;
+// // Making array of menu texts
+// const menutext = Object.values(menuredo);
+// menutext.pop();
+// console.log(menutext);
 
-// Running forEach to make object
-menutext.forEach(item => {
-  let menuitem = document.createElement('a');
-  menuitem.textContent = item;
-  //Changing font color to green
-  menuitem.style.color = 'green';
-  let oldnav = document.querySelector(".container header nav");
-  oldnav.appendChild(menuitem);
-})
+// // Running forEach to make object
+// menutext.forEach(item => {
+//   let menuitem = document.createElement('a');
+//   menuitem.textContent = item;
+//   //Changing font color to green
+//   menuitem.style.color = 'green';
+//   let oldnav = document.querySelector(".container header nav");
+//   oldnav.appendChild(menuitem);
+// })
 
+let oldnav = document.querySelector(".container header nav");
+let count = 0;
+
+oldnav.childNodes.forEach(nav => {
+  if(nav.nodeName === '#text'){
+  } 
+  else {
+    nav.textContent = siteContent["nav"]["nav-item-" + count]
+    nav.style.color = "green";
+    count++
+  }
+});
 //  const menu = document.querySelectorAll("a");
 //  console.log(menu);
 //  menu[0].textContent = siteContent["nav"]["nav-item-1"];
